@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSA Express Food - Quick Delivery</title>
+    <style>
+        :root { --saudi-green: #006C35; --gold: #C5A059; --bg: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg); color: #333; }
+        
+        header { background: var(--saudi-green); color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
+        .hero p { opacity: 0.9; margin-top: 5px; font-size: 1rem; }
+
+        .container { max-width: 550px; margin: 20px auto; padding: 10px; }
+
+        .food-card { background: white; border-radius: 15px; margin-bottom: 12px; display: flex; align-items: center; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+        .food-card:hover { transform: scale(1.02); }
+        .food-img { font-size: 2.2rem; background: #f0fdf4; padding: 10px; border-radius: 12px; min-width: 70px; text-align: center; }
+        .food-info { flex: 1; padding-left: 15px; }
+        .food-info h3 { font-size: 1rem; color: var(--saudi-green); }
+        .food-info p { font-size: 0.8rem; color: #777; margin-bottom: 5px; }
+        .price { font-weight: bold; color: #1a1a1a; font-size: 1.1rem; }
+
+        .order-btn { background: var(--saudi-green); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+        /* Modal */
+        #orderModal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index: 1000; }
+        .modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 400px; background: white; padding: 25px; border-radius: 20px; text-align: center; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; }
+        .submit-btn { background: #25D366; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+        .close-btn { color: #888; cursor: pointer; margin-top: 15px; display: block; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>KSA Express Food</h1>
+    <p>Fast & Premium Delivery across Saudi Arabia</p>
+</header>
+
+<div class="container">
+    <div class="food-card">
+        <div class="food-img">🍗</div>
+        <div class="food-info">
+            <h3>Broasted Chicken Set</h3>
+            <p>4 Pcs Chicken + Fries + Garlic</p>
+            <div class="price">45 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Broasted Chicken Set', '45 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🍛</div>
+        <div class="food-info">
+            <h3>Mutton Kabsa</h3>
+            <p>Tender Mutton with Spiced Rice</p>
+            <div class="price">65 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Mutton Kabsa', '65 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🍔</div>
+        <div class="food-info">
+            <h3>Double Beef Burger</h3>
+            <p>Cheese, Patty & Special Sauce</p>
+            <div class="price">38 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Double Beef Burger', '38 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🥪</div>
+        <div class="food-info">
+            <h3>Grand Club Sandwich</h3>
+            <p>Chicken, Egg, Cheese & Fries</p>
+            <div class="price">30 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Grand Club Sandwich', '30 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🔥</div>
+        <div class="food-info">
+            <h3>Al Faham (Half)</h3>
+            <p>Charcoal Grilled Chicken + Salad</p>
+            <div class="price">42 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Al Faham Chicken', '42 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🌯</div>
+        <div class="food-info">
+            <h3>Shawarma Jumbo Box</h3>
+            <p>Extra Large Roll + Fries</p>
+            <div class="price">35 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Shawarma Jumbo Box', '35 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🍔</div>
+        <div class="food-info">
+            <h3>Crispy Zinger Burger</h3>
+            <p>Spicy Chicken Fillet + Cheese</p>
+            <div class="price">32 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Zinger Burger', '32 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🍢</div>
+        <div class="food-info">
+            <h3>Mixed Grill Plate</h3>
+            <p>Kebab, Shish Tawook & Hummus</p>
+            <div class="price">75 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Mixed Grill Plate', '75 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🍰</div>
+        <div class="food-info">
+            <h3>Kunafa (Cheese)</h3>
+            <p>Classic Saudi Dessert (Hot)</p>
+            <div class="price">30 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Kunafa Cheese', '30 SR')">Order</button>
+    </div>
+
+    <div class="food-card">
+        <div class="food-img">🍹</div>
+        <div class="food-info">
+            <h3>Fresh Fruit Cocktail</h3>
+            <p>Large Mix with Cream</p>
+            <div class="price">25 SR</div>
+        </div>
+        <button class="order-btn" onclick="openModal('Fresh Fruit Cocktail', '25 SR')">Order</button>
+    </div>
+</div>
+
+<div id="orderModal">
+    <div class="modal-content">
+        <h2 id="foodName" style="color: var(--saudi-green);"></h2>
+        <p id="foodPrice" style="font-weight: bold; margin-bottom: 15px;"></p>
+        <input type="text" id="custName" placeholder="Your Name / আপনার নাম">
+        <input type="text" id="custCity" placeholder="City / শহর (Jeddah/Riyadh/etc)">
+        <input type="text" id="custLocation" placeholder="Address / বাসার ঠিকানা">
+        <button class="submit-btn" onclick="sendToWhatsApp()">Confirm via WhatsApp</button>
+        <span class="close-btn" onclick="closeModal()">Close</span>
+    </div>
+</div>
+
+<script>
+    let selectedFood = ""; let selectedPrice = "";
+    function openModal(name, price) {
+        selectedFood = name; selectedPrice = price;
+        document.getElementById('foodName').innerText = name;
+        document.getElementById('foodPrice').innerText = "Total: " + price;
+        document.getElementById('orderModal').style.display = 'block';
+    }
+    function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
+    function sendToWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const city = document.getElementById('custCity').value;
+        const loc = document.getElementById('custLocation').value;
+        if(!name || !city || !loc) { alert("Please fill details!"); return; }
+        const msg = `*NEW FOOD ORDER RECEIVED*%0A%0A*Item:* ${selectedFood}%0A*Price:* ${selectedPrice}%0A%0A*Customer:*%0AName: ${name}%0ACity: ${city}%0ALocation: ${loc}`;
+        window.open(`https://wa.me/966560976031?text=${msg}`, '_blank');
+        closeModal();
+    }
+</script>
+
+</body>
+</html>
