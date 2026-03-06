@@ -3,175 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSA Express Food - Quick Delivery</title>
+    <title>HomeServe KSA | Premium Food Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --saudi-green: #006C35; --gold: #C5A059; --bg: #f8fafc; }
+        :root {
+            --primary: #006C35; /* Saudi Green */
+            --gold: #C5A059;
+            --dark: #121212;
+            --light: #fdfdfd;
+            --gray: #f4f4f4;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--bg); color: #333; }
+        body { background: var(--gray); color: var(--dark); overflow-x: hidden; }
+
+        /* Language Switcher */
+        .lang-bar {
+            background: var(--dark);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .lang-bar button {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .lang-bar button:hover { background: var(--gold); color: white; }
+
+        /* Header & Hero */
+        header {
+            background: linear-gradient(rgba(0,108,53,0.9), rgba(0,108,53,0.9)), url('https://images.unsplash.com/photo-1547573854-74d2a7ad4484?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
+        header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; }
+        header p { font-size: 1rem; opacity: 0.9; margin-top: 5px; }
+
+        /* Future Food Banner */
+        .coming-soon {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Menu Section */
+        .container { max-width: 600px; margin: 30px auto; padding: 0 15px; }
+        .section-title { margin-bottom: 20px; font-weight: 700; border-left: 5px solid var(--primary); padding-left: 10px; }
+
+        .food-card {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            position: relative;
+        }
+        .food-card:hover { transform: translateY(-5px); }
         
-        header { background: var(--saudi-green); color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
-        .hero p { opacity: 0.9; margin-top: 5px; font-size: 1rem; }
+        .food-img {
+            width: 80px; height: 80px;
+            background: var(--gray);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem;
+        }
 
-        .container { max-width: 550px; margin: 20px auto; padding: 10px; }
+        .food-info { flex: 1; padding: 0 15px; }
+        .food-info h3 { font-size: 1.1rem; color: var(--primary); }
+        .food-info p { font-size: 0.8rem; color: #777; }
+        .price { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-top: 5px; }
 
-        .food-card { background: white; border-radius: 15px; margin-bottom: 12px; display: flex; align-items: center; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
-        .food-card:hover { transform: scale(1.02); }
-        .food-img { font-size: 2.2rem; background: #f0fdf4; padding: 10px; border-radius: 12px; min-width: 70px; text-align: center; }
-        .food-info { flex: 1; padding-left: 15px; }
-        .food-info h3 { font-size: 1rem; color: var(--saudi-green); }
-        .food-info p { font-size: 0.8rem; color: #777; margin-bottom: 5px; }
-        .price { font-weight: bold; color: #1a1a1a; font-size: 1.1rem; }
+        .order-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-        .order-btn { background: var(--saudi-green); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        /* Modern Modal */
+        #orderModal {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.8); z-index: 2000; backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 400px;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 30px; border-radius: 25px; text-align: center;
+        }
+        .modal-content input {
+            width: 100%; padding: 15px; margin: 10px 0;
+            border: 1px solid #ddd; border-radius: 12px; font-size: 1rem; outline: none;
+        }
+        .modal-content input:focus { border-color: var(--primary); }
+        .confirm-btn {
+            background: #25D366; color: white; width: 100%; padding: 15px;
+            border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+        }
 
-        /* Modal */
-        #orderModal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index: 1000; }
-        .modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 400px; background: white; padding: 25px; border-radius: 20px; text-align: center; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; }
-        .submit-btn { background: #25D366; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
-        .close-btn { color: #888; cursor: pointer; margin-top: 15px; display: block; }
+        footer { text-align: center; padding: 40px; color: #aaa; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>KSA Express Food</h1>
-    <p>Fast & Premium Delivery across Saudi Arabia</p>
-</header>
+    <div class="lang-bar">
+        <button onclick="changeLang('en')">English</button>
+        <button onclick="changeLang('ar')">العربية</button>
+        <button onclick="changeLang('hi')">हिन्दी</button>
+        <button onclick="changeLang('bn')">বাংলা</button>
+    </div>
 
-<div class="container">
-    <div class="food-card">
-        <div class="food-img">🍗</div>
-        <div class="food-info">
-            <h3>Broasted Chicken Set</h3>
-            <p>4 Pcs Chicken + Fries + Garlic</p>
-            <div class="price">45 SR</div>
+    <header>
+        <h1 id="mainTitle">HomeServe KSA</h1>
+        <p id="subTitle">Premium Homemade Taste & Quick Delivery</p>
+    </header>
+
+    <div class="coming-soon">
+        <i class="fas fa-star"></i> 
+        <span id="comingSoon">More delicious foods are coming soon! | আরও খাবার শীঘ্রই আসছে! | قريباً المزيد من الأطعمة الشهية</span>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title" id="menuTitle">Our Menu</h2>
+
+        <div class="food-card">
+            <div class="food-img">🍗</div>
+            <div class="food-info">
+                <h3>Broasted Chicken</h3>
+                <p>Al-Baik Style 4 Pcs + Fries</p>
+                <div class="price">45 SR</div>
+            </div>
+            <button class="order-btn" onclick="openOrder('Broasted Chicken', '45 SR')">Order</button>
         </div>
-        <button class="order-btn" onclick="openModal('Broasted Chicken Set', '45 SR')">Order</button>
-    </div>
 
-    <div class="food-card">
-        <div class="food-img">🍛</div>
-        <div class="food-info">
-            <h3>Mutton Kabsa</h3>
-            <p>Tender Mutton with Spiced Rice</p>
-            <div class="price">65 SR</div>
+        <div class="food-card">
+            <div class="food-img">🍔</div>
+            <div class="food-info">
+                <h3>Double Beef Burger</h3>
+                <p>Premium Beef Patty & Cheese</p>
+                <div class="price">38 SR</div>
+            </div>
+            <button class="order-btn" onclick="openOrder('Double Beef Burger', '38 SR')">Order</button>
         </div>
-        <button class="order-btn" onclick="openModal('Mutton Kabsa', '65 SR')">Order</button>
-    </div>
 
-    <div class="food-card">
-        <div class="food-img">🍔</div>
-        <div class="food-info">
-            <h3>Double Beef Burger</h3>
-            <p>Cheese, Patty & Special Sauce</p>
-            <div class="price">38 SR</div>
         </div>
-        <button class="order-btn" onclick="openModal('Double Beef Burger', '38 SR')">Order</button>
-    </div>
 
-    <div class="food-card">
-        <div class="food-img">🥪</div>
-        <div class="food-info">
-            <h3>Grand Club Sandwich</h3>
-            <p>Chicken, Egg, Cheese & Fries</p>
-            <div class="price">30 SR</div>
+    <div id="orderModal">
+        <div class="modal-content">
+            <h2 id="modalFood" style="color: var(--primary);"></h2>
+            <p id="modalPrice" style="font-weight: bold; margin-bottom: 20px;"></p>
+            <input type="text" id="custName" placeholder="Full Name">
+            <input type="text" id="custCity" placeholder="City (Jeddah/Riyadh/etc)">
+            <input type="text" id="custLoc" placeholder="District/Street Name">
+            <button class="confirm-btn" onclick="completeOrder()">Confirm via WhatsApp</button>
+            <p onclick="closeOrder()" style="margin-top: 15px; color: #888; cursor: pointer;">Cancel</p>
         </div>
-        <button class="order-btn" onclick="openModal('Grand Club Sandwich', '30 SR')">Order</button>
     </div>
 
-    <div class="food-card">
-        <div class="food-img">🔥</div>
-        <div class="food-info">
-            <h3>Al Faham (Half)</h3>
-            <p>Charcoal Grilled Chicken + Salad</p>
-            <div class="price">42 SR</div>
-        </div>
-        <button class="order-btn" onclick="openModal('Al Faham Chicken', '42 SR')">Order</button>
-    </div>
+    <footer>
+        &copy; 2026 HomeServe KSA. All Rights Reserved.
+    </footer>
 
-    <div class="food-card">
-        <div class="food-img">🌯</div>
-        <div class="food-info">
-            <h3>Shawarma Jumbo Box</h3>
-            <p>Extra Large Roll + Fries</p>
-            <div class="price">35 SR</div>
-        </div>
-        <button class="order-btn" onclick="openModal('Shawarma Jumbo Box', '35 SR')">Order</button>
-    </div>
+    <script>
+        const translations = {
+            en: { title: "HomeServe KSA", sub: "Premium Homemade Taste", menu: "Our Menu", btn: "Order", name: "Full Name", city: "City", loc: "Address" },
+            ar: { title: "هوم سيرف السعودية", sub: "طعم منزلي فاخر", menu: "قائمتنا", btn: "طلب", name: "الاسم الكامل", city: "المدينة", loc: "العنوان" },
+            hi: { title: "HomeServe KSA", sub: "प्रीमियम होममेड स्वाद", menu: "हमारा मेनू", btn: "ऑर्डर", name: "पूरा नाम", city: "शहर", loc: "पता" },
+            bn: { title: "হোম-সার্ভ কেএসএ", sub: "ঘরোয়া স্বাদ ও দ্রুত ডেলিভারি", menu: "আমাদের মেনু", btn: "অর্ডার", name: "আপনার নাম", city: "শহর", loc: "ঠিকানা" }
+        };
 
-    <div class="food-card">
-        <div class="food-img">🍔</div>
-        <div class="food-info">
-            <h3>Crispy Zinger Burger</h3>
-            <p>Spicy Chicken Fillet + Cheese</p>
-            <div class="price">32 SR</div>
-        </div>
-        <button class="order-btn" onclick="openModal('Zinger Burger', '32 SR')">Order</button>
-    </div>
+        function changeLang(lang) {
+            document.getElementById('mainTitle').innerText = translations[lang].title;
+            document.getElementById('subTitle').innerText = translations[lang].sub;
+            document.getElementById('menuTitle').innerText = translations[lang].menu;
+            document.getElementById('custName').placeholder = translations[lang].name;
+            document.getElementById('custCity').placeholder = translations[lang].city;
+            document.getElementById('custLoc').placeholder = translations[lang].loc;
+            
+            let btns = document.querySelectorAll('.order-btn');
+            btns.forEach(b => b.innerText = translations[lang].btn);
+        }
 
-    <div class="food-card">
-        <div class="food-img">🍢</div>
-        <div class="food-info">
-            <h3>Mixed Grill Plate</h3>
-            <p>Kebab, Shish Tawook & Hummus</p>
-            <div class="price">75 SR</div>
-        </div>
-        <button class="order-btn" onclick="openModal('Mixed Grill Plate', '75 SR')">Order</button>
-    </div>
+        let currentFood = ""; let currentPrice = "";
+        function openOrder(f, p) {
+            currentFood = f; currentPrice = p;
+            document.getElementById('modalFood').innerText = f;
+            document.getElementById('modalPrice').innerText = "Total: " + p;
+            document.getElementById('orderModal').style.display = 'block';
+        }
+        function closeOrder() { document.getElementById('orderModal').style.display = 'none'; }
 
-    <div class="food-card">
-        <div class="food-img">🍰</div>
-        <div class="food-info">
-            <h3>Kunafa (Cheese)</h3>
-            <p>Classic Saudi Dessert (Hot)</p>
-            <div class="price">30 SR</div>
-        </div>
-        <button class="order-btn" onclick="openModal('Kunafa Cheese', '30 SR')">Order</button>
-    </div>
-
-    <div class="food-card">
-        <div class="food-img">🍹</div>
-        <div class="food-info">
-            <h3>Fresh Fruit Cocktail</h3>
-            <p>Large Mix with Cream</p>
-            <div class="price">25 SR</div>
-        </div>
-        <button class="order-btn" onclick="openModal('Fresh Fruit Cocktail', '25 SR')">Order</button>
-    </div>
-</div>
-
-<div id="orderModal">
-    <div class="modal-content">
-        <h2 id="foodName" style="color: var(--saudi-green);"></h2>
-        <p id="foodPrice" style="font-weight: bold; margin-bottom: 15px;"></p>
-        <input type="text" id="custName" placeholder="Your Name / আপনার নাম">
-        <input type="text" id="custCity" placeholder="City / শহর (Jeddah/Riyadh/etc)">
-        <input type="text" id="custLocation" placeholder="Address / বাসার ঠিকানা">
-        <button class="submit-btn" onclick="sendToWhatsApp()">Confirm via WhatsApp</button>
-        <span class="close-btn" onclick="closeModal()">Close</span>
-    </div>
-</div>
-
-<script>
-    let selectedFood = ""; let selectedPrice = "";
-    function openModal(name, price) {
-        selectedFood = name; selectedPrice = price;
-        document.getElementById('foodName').innerText = name;
-        document.getElementById('foodPrice').innerText = "Total: " + price;
-        document.getElementById('orderModal').style.display = 'block';
-    }
-    function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
-    function sendToWhatsApp() {
-        const name = document.getElementById('custName').value;
-        const city = document.getElementById('custCity').value;
-        const loc = document.getElementById('custLocation').value;
-        if(!name || !city || !loc) { alert("Please fill details!"); return; }
-        const msg = `*NEW FOOD ORDER RECEIVED*%0A%0A*Item:* ${selectedFood}%0A*Price:* ${selectedPrice}%0A%0A*Customer:*%0AName: ${name}%0ACity: ${city}%0ALocation: ${loc}`;
-        window.open(`https://wa.me/966560976031?text=${msg}`, '_blank');
-        closeModal();
-    }
-</script>
-
+        function completeOrder() {
+            const name = document.getElementById('custName').value;
+            const city = document.getElementById('custCity').value;
+            const loc = document.getElementById('custLoc').value;
+            if(!name || !city || !loc) { alert("Please fill all details!"); return; }
+            
+            const text = `*NEW PREMIUM ORDER*%0A%0A*Item:* ${currentFood}%0A*Price:* ${currentPrice}%0A%0A*Customer:*%0AName: ${name}%0ACity: ${city}%0ALocation: ${loc}`;
+            window.open(`https://wa.me/966560976031?text=${text}`, '_blank');
+            closeOrder();
+        }
+    </script>
 </body>
 </html>
+
