@@ -3,82 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeServe KSA | Premium Food Network</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>HomeServe KSA | Mainul Islam Shuvo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --primary: #006C35; --gold: #C5A059; --dark: #0f172a; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #fafafa; color: #333; overflow-x: hidden; }
-        
-        .lang-bar { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
-        .lang-bar button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+        :root { --primary: #006C35; --gold: #C5A059; --dark: #0f172a; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #f8fafc; color: #1e293b; overflow-x: hidden; }
 
+        /* Language Bar */
+        .lang-bar { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
+        .lang-bar button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+
+        /* Premium Header */
         header { 
             background: linear-gradient(135deg, var(--dark), var(--primary)); 
-            color: white; padding: 85px 20px 60px; text-align: center; border-bottom: 5px solid var(--gold); 
-            display: flex; flex-direction: column; align-items: center; position: relative;
+            color: white; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--gold); 
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); 
         }
+        .brand-badge { color: var(--gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .owner-name { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px; font-weight: 400; }
+        header h1 { font-size: 2.3rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+        header p { font-size: 1rem; opacity: 0.8; font-weight: 300; margin-top: 5px; }
 
-        /* Side-e Photo Positioning */
-        .header-pic-container { 
-            position: absolute; 
-            top: 25px; 
-            left: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            gap: 4px; 
-            z-index: 10;
-        }
-        .maintenance-text { 
-            color: var(--gold); 
-            font-size: 0.55rem; 
-            font-weight: 700; 
-            background: rgba(0,0,0,0.5); 
-            padding: 2px 8px; 
-            border-radius: 5px; 
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-        }
-        /* Apnar Base64 Image - image_0.png thik ekhane load hobe */
-        .header-pic { 
-            width: 75px; 
-            height: 75px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 2px solid var(--gold); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4); 
-        }
-
-        header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--gold); letter-spacing: 1px; margin-top: 10px; }
-        header p { font-size: 0.95rem; opacity: 0.8; font-weight: 300; }
-
-        .marquee-box { background: white; padding: 12px 0; border-bottom: 1px solid #eee; overflow: hidden; }
-        .marquee-box p { display: inline-block; white-space: nowrap; font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--primary); animation: scrollText 22s linear infinite; }
+        /* Marquee */
+        .promo-bar { background: white; padding: 12px 0; border-bottom: 1px solid #e2e8f0; overflow: hidden; }
+        .promo-bar p { display: inline-block; white-space: nowrap; font-weight: 600; color: var(--primary); animation: scrollText 25s linear infinite; }
         @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        .tracker-card { background: var(--dark); color: white; margin: 25px auto; padding: 22px; border-radius: 20px; max-width: 520px; width: 92%; border: 1px solid #334155; }
-        .tracker-card h4 { font-size: 0.95rem; color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-family: 'Poppins', sans-serif; }
-        .progress-bar { height: 10px; background: #334155; border-radius: 10px; overflow: hidden; }
-        .progress-fill { width: 65%; height: 100%; background: linear-gradient(to right, var(--gold), #fef08a); }
+        /* Tracking Card - NO TIME */
+        .tracking-box { background: var(--dark); color: white; margin: 25px auto; padding: 25px; border-radius: 20px; max-width: 550px; width: 92%; border: 1px solid #334155; }
+        .tracking-box h4 { font-size: 1rem; color: var(--gold); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .progress-container { height: 10px; background: #334155; border-radius: 5px; overflow: hidden; }
+        .progress-bar { width: 65%; height: 100%; background: linear-gradient(to right, var(--gold), #fde047); }
 
+        /* Menu */
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .menu-header { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--dark); }
+        .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--dark); }
         .menu-grid { display: grid; gap: 15px; }
-        .food-item { background: white; border-radius: 20px; padding: 15px; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .food-icon { font-size: 2.5rem; background: #f0fdf4; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 18px; }
-        .food-details { flex: 1; padding: 0 15px; }
-        .food-details h3 { font-size: 1rem; color: var(--dark); }
-        .food-details .price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
-        .order-button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; font-family: 'Orbitron', sans-serif; cursor: pointer; font-size: 0.85rem; }
+        .food-card { background: white; border-radius: 20px; padding: 18px; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; }
+        .food-icon { font-size: 2.5rem; background: #f0fdf4; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 18px; }
+        .food-info { flex: 1; padding: 0 15px; }
+        .food-info h3 { font-size: 1.05rem; color: var(--dark); }
+        .food-price { font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-top: 2px; }
+        .order-btn { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.3s; }
 
-        #modalOverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; backdrop-filter: blur(10px); }
-        .modal-box { background: white; width: 92%; max-width: 420px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 35px; border-radius: 25px; text-align: center; }
-        input, select { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #f1f5f9; border-radius: 12px; font-family: 'Poppins', sans-serif; background: #f8fafc; }
-        .confirm-btn { background: #22c55e; color: white; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 700; font-family: 'Orbitron', sans-serif; cursor: pointer; font-size: 1.1rem; }
+        /* Checkout */
+        #checkoutModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; backdrop-filter: blur(10px); }
+        .modal { background: white; width: 92%; max-width: 450px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 35px; border-radius: 30px; }
+        input, select { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #e2e8f0; border-radius: 12px; outline: none; background: #f8fafc; }
+        .confirm-btn { background: var(--primary); color: white; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -91,80 +66,78 @@
     </div>
 
     <header>
-        <div class="header-pic-container">
-            <span class="maintenance-text">Maintenance The Class</span>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." alt="Owner" class="header-pic">
-        </div>
+        <span class="brand-badge">Maintenance The Class</span>
+        <div class="owner-name">by Mainul Islam Shuvo</div>
         <h1 id="h-title">HOMESERVE KSA</h1>
         <p id="h-sub">Premium Homemade Taste & Smart Delivery</p>
     </header>
 
-    <div class="marquee-box">
-        <p>★ MORE PREMIUM FOODS ARE COMING SOON ★ قريباً المزيد من الأطعمة ★ আরও সুস্বাদু খাবার শীঘ্রই আসছে ★</p>
+    <div class="promo-bar">
+        <p>★ MORE PREMIUM FOODS ARE COMING SOON ★ قরিবার আরও সুস্বাদু খাবার শীঘ্রই আসছে ★ قريباً المزيد من الأطعمة ★</p>
     </div>
 
-    <div class="tracker-card">
+    <div class="tracking-box">
         <h4 id="tr-h"><i class="fas fa-truck-fast"></i> Live Delivery Tracking</h4>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
-        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 10px; font-weight: 600; color: var(--gold);">
+        <div class="progress-container"><div class="progress-bar"></div></div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 12px; font-weight: 600; color: var(--gold);">
             <span id="s-rec">Order Received</span>
-            <span id="s-status">Status: Active</span>
+            <span id="s-status">Rider Status: Active</span>
         </div>
     </div>
 
     <div class="container">
-        <h2 id="m-title" class="menu-header">Our Menu</h2>
+        <h2 id="m-title" class="section-title">Selection Menu</h2>
         <div class="menu-grid" id="menuGrid"></div>
     </div>
 
-    <div id="modalOverlay">
-        <div class="modal-box">
-            <h2 style="color: var(--primary); font-family: 'Orbitron', sans-serif;">Confirm Order</h2>
+    <div id="checkoutModal">
+        <div class="modal">
+            <h2 style="color: var(--primary);">Confirm Order</h2>
             <p id="sel-food-name" style="margin: 15px 0; font-weight: 600; font-size: 1.1rem;"></p>
-            <input type="text" id="custName" placeholder="Full Name">
+            <input type="text" id="custName" placeholder="Your Name">
             <input type="tel" id="custPhone" placeholder="WhatsApp Number">
-            <input type="text" id="custLoc" placeholder="Address">
+            <input type="text" id="custLoc" placeholder="Address / Location">
             <select id="custPay"><option value="STC Pay">STC Pay</option><option value="Al Rajhi Bank">Al Rajhi Bank</option></select>
-            <button class="confirm-btn" onclick="confirmOrder()">Confirm Order</button>
-            <p onclick="closeModal()" style="margin-top: 20px; color: #94a3b8; cursor: pointer;">Back</p>
+            <button class="confirm-btn" onclick="sendToWhatsApp()">Confirm Order</button>
+            <p onclick="closeModal()" style="margin-top: 20px; color: #94a3b8; cursor: pointer; text-align: center;">Back</p>
         </div>
     </div>
 
     <script>
-        const menuData = [
+        const foodItems = [
             { icon: "🍗", p: "45 SR", en: "Broasted Chicken (4pc)", ar: "دجاج بروستد", bn: "ব্রোস্টেড চিকেন", hi: "ब्रोस्टेड चिकन" },
             { icon: "🍛", p: "65 SR", en: "Mutton Kabsa", ar: "كبسة لحم غنم", bn: "খাসির কাবসা", hi: "मटन कब्सा" },
-            { icon: "🍔", p: "38 SR", en: "Double Beef Burger", ar: "برجر لحم دبل", bn: "ডাবল বিফ বার্গার", hi: "ডবল বিफ বার্গার" },
+            { icon: "🍔", p: "38 SR", en: "Double Beef Burger", ar: "برجر لحم دبل", bn: "ডাবল বিফ বার্গার", hi: "डबल बीफ बर्गर" },
             { icon: "🥪", p: "30 SR", en: "Club Sandwich", ar: "كلوب ساندوتش", bn: "ক্লাব স্যান্ডউইচ", hi: "ক্লাব স্যান্ডউইচ" },
-            { icon: "🔥", p: "42 SR", en: "Al Faham Chicken", ar: "دجاج الفحم", bn: "আল ফাহাম চিকেন", hi: "আল ফাহাম চিকেন" },
-            { icon: "🌯", p: "35 SR", en: "Shawarma Jumbo", ar: "شاورما جامبو", bn: "শাওয়ারমা জ্যাম্বো", hi: "শাওয়ারমা জ্যাম্বো" },
-            { icon: "🍱", p: "50 SR", en: "Chicken Mandi", ar: "مندي دجاج", bn: "চিকেন মান্দি", hi: "চিকেন মান্দি" },
-            { icon: "🍢", p: "75 SR", en: "Mixed Grill", ar: "مشويات مشكلة", bn: "মিক্সড গ্রিল", hi: "মিক্সড গ্রিল" },
-            { icon: "🍝", p: "40 SR", en: "White Pasta", ar: "باستا صوص أبيض", bn: "হোয়াইট সস পাস্তা", hi: "হোয়াইট সস পাস্তা" },
-            { icon: "🍕", p: "55 SR", en: "Premium Pizza", ar: "بيتزا فاخرة", bn: "প্রিমিয়াম পিজ্জা", hi: "প্রিমিয়াম পিজ্জা" },
-            { icon: "🍤", p: "80 SR", en: "Grilled Prawns", ar: "روبيان مشوي", bn: "গ্রিলড প্রন", hi: "গ্রিলড প্রন" },
-            { icon: "🥘", p: "48 SR", en: "Mutton Madhu", ar: "مضغوط لحم", bn: "খাসির মাজগুত", hi: "খাসির মাজগুত" },
-            { icon: "🥗", p: "20 SR", en: "Arabic Salad", ar: "سلطة عربية", bn: "আরবি সালাদ", hi: "আরবি সালাদ" },
-            { icon: "🥞", p: "28 SR", en: "Honey Pancake", ar: "بان كيك بالعسل", bn: "প্যানকেক মধু", hi: "প্যানকেক মধু" },
-            { icon: "☕", p: "12 SR", en: "Saudi Coffee", ar: "قهوة سعودية", bn: "সৌদি কফি", hi: "সৌদি কফি" },
-            { icon: "🍦", p: "18 SR", en: "Turkish Ice Cream", ar: "آيس كريم تركي", bn: "তুর্কি আইসক্রিম", hi: "তুর্কি আইসক্রিম" },
-            { icon: "🍟", p: "15 SR", en: "French Fries", ar: "بطاطস مقلية", bn: "ফ্রেঞ্চ ফ্রাই", hi: "ফ্রেঞ্চ ফ্রাই" },
-            { icon: "🍹", p: "25 SR", en: "Fruit Cocktail", ar: "كوكتيل فواكه", bn: "ফ্রেশ ককটেল", hi: "ফ্রেশ ককটেল" },
-            { icon: "🍩", p: "10 SR", en: "Fresh Donuts", ar: "دونات طازجة", bn: "তাজা ডোনাটস", hi: "তাজা ডোনাটস" },
-            { icon: "🍰", p: "30 SR", en: "Kunafa", ar: "كنافة", bn: "কুনাফা", hi: "কুনাফা" }
+            { icon: "🔥", p: "42 SR", en: "Al Faham Chicken", ar: "دجاج الفحم", bn: "আল ফাহাম চিকেন", hi: "अल फहम चिकन" },
+            { icon: "🌯", p: "35 SR", en: "Shawarma Jumbo", ar: "شاورما جامبو", bn: "শাওয়ারমা জ্যাম্বো", hi: "शवरमा जंबो" },
+            { icon: "🍱", p: "50 SR", en: "Chicken Mandi", ar: "مندي دجاج", bn: "চিকেন মান্দি", hi: "चिकन मंडी" },
+            { icon: "🍢", p: "75 SR", en: "Mixed Grill", ar: "مشويات مشكلة", bn: "মিক্সড গ্রিল", hi: "मिक्स ग्रिल" },
+            { icon: "🍝", p: "40 SR", en: "White Sauce Pasta", ar: "باস্তা صوص أبيض", bn: "হোয়াইট সস পাস্তা", hi: "व्हाइट सॉस पास्ता" },
+            { icon: "🍕", p: "55 SR", en: "Premium Pizza", ar: "بيتزا فاخرة", bn: "প্রিমিয়াম পিজ্জা", hi: "प्रीमियम पिज्जा" },
+            { icon: "🍤", p: "80 SR", en: "Grilled Prawns", ar: "روبيان مشوي", bn: "গ্রিলড প্রন", hi: "ग्रिल्ড प्रॉन" },
+            { icon: "🥘", p: "48 SR", en: "Mutton Madhu", ar: "مضغوط لحم", bn: "খাসির মাজগুত", hi: "मटन मधू" },
+            { icon: "🥗", p: "20 SR", en: "Arabic Salad", ar: "سلطة عربية", bn: "আরবি সালাদ", hi: "अरबी सलाद" },
+            { icon: "🥞", p: "28 SR", en: "Honey Pancake", ar: "بان كيك بالعسل", bn: "প্যানকেক মধু", hi: "প্যানकेक" },
+            { icon: "☕", p: "12 SR", en: "Saudi Coffee", ar: "قهوة سعودية", bn: "সৌদি কফি", hi: "सऊदी कॉफी" },
+            { icon: "🍦", p: "18 SR", en: "Turkish Ice Cream", ar: "آيس كريم تركي", bn: "তুর্কি আইসক্রিম", hi: "तुर्की आइसक्रीम" },
+            { icon: "🍟", p: "15 SR", en: "French Fries", ar: "بطاطس مقلية", bn: "ফ্রেঞ্চ ফ্রাই", hi: "फ्रेंच फ्राइज़" },
+            { icon: "🍹", p: "25 SR", en: "Fruit Cocktail", ar: "كوكتيل فواكه", bn: "ফ্রেশ ককটেল", hi: "फ्रेश कॉकटेल" },
+            { icon: "🍩", p: "10 SR", en: "Fresh Donuts", ar: "دونات طازجة", bn: "তাজা ডোনাটস", hi: "डोनट्स" },
+            { icon: "🍰", p: "30 SR", en: "Kunafa", ar: "كنافة", bn: "কুনাফা", hi: "कुनाफा" }
         ];
 
-        let lang = 'en'; let selItem = ""; let selPrice = "";
+        let curL = 'en'; let sF = ""; let sP = "";
         const dict = {
-            en: { t: "HOMESERVE KSA", m: "Our Menu", b: "Order", tr: "Delivery Tracking", r: "Order Received", s: "Status: Active" },
-            ar: { t: "هوم سيرف السعودية", m: "قائمة الطعام", b: "طلب", tr: "تتبع التوصيل", r: "تم الاستلام", s: "الحالة: نشط" },
-            bn: { t: "হোম-সার্ভ কেএসএ", m: "খাবার তালিকা", b: "অর্ডার", tr: "ডেলিভারি ট্র্যাকিং", r: "অর্ডার গৃহীত", s: "স্ট্যাটাস: সক্রিয়" }
+            en: { t: "HOMESERVE KSA", m: "Selection Menu", b: "Order", tr: "Delivery Tracking", r: "Received", s: "Rider Status: Active" },
+            ar: { t: "هوم سيرف السعودية", m: "قائمة الطعام", b: "طلب", tr: "تتبع التوصيل", r: "تم الاستلام", s: "حالة السائق: نشط" },
+            bn: { t: "হোম-সার্ভ কেএসএ", m: "খাবার নির্বাচন", b: "অর্ডার", tr: "ডেলিভারি ট্র্যাকিং", r: "গৃহীত", s: "রাইডার: সক্রিয়" }
         };
 
         function setLang(l) {
-            lang = l; document.getElementById('h-title').innerText = dict[l].t;
+            curL = l; document.getElementById('h-title').innerText = dict[l].t;
             document.getElementById('m-title').innerText = dict[l].m;
-            document.getElementById('tr-h').innerHTML = `<i class="fas fa-truck-fast"></i> ${dict[l].tr}`;
+            document.getElementById('tr-h').innerText = dict[l].tr;
             document.getElementById('s-rec').innerText = dict[l].r;
             document.getElementById('s-status').innerText = dict[l].s;
             renderMenu();
@@ -172,19 +145,20 @@
 
         function renderMenu() {
             const grid = document.getElementById('menuGrid'); grid.innerHTML = "";
-            menuData.forEach(f => {
-                grid.innerHTML += `<div class="food-item"><div class="food-icon">${f.icon}</div><div class="food-details"><h3>${f[lang] || f.en}</h3><div class="price">${f.p}</div></div><button class="order-button" onclick="openCheckout('${f[lang] || f.en}', '${f.p}')">${dict[lang].b}</button></div>`;
+            foodItems.forEach(f => {
+                grid.innerHTML += `<div class="food-card"><div class="food-icon">${f.icon}</div><div class="food-info"><h3>${f[curL] || f.en}</h3><div class="food-price">${f.p}</div></div><button class="order-btn" onclick="openCheckout('${f[curL] || f.en}', '${f.p}')">${dict[curL].b}</button></div>`;
             });
         }
 
-        function openCheckout(n, p) { selItem = n; selPrice = p; document.getElementById('sel-food-name').innerText = n + " (" + p + ")"; document.getElementById('modalOverlay').style.display = 'block'; }
-        function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
+        function openCheckout(n, p) { sF = n; sP = p; document.getElementById('sel-food-name').innerText = n + " (" + p + ")"; document.getElementById('checkoutModal').style.display = 'block'; }
+        function closeModal() { document.getElementById('checkoutModal').style.display = 'none'; }
 
-        function confirmOrder() {
+        function sendToWhatsApp() {
             const n = document.getElementById('custName').value;
-            if(!n) { alert("Please enter your name"); return; }
+            if(!n) { alert("Please enter name"); return; }
             alert("Order Confirm, Shukriyan Habibi.");
-            window.open(`https://wa.me/966560976031?text=New Order: ${selItem} (${selPrice}), Customer: ${n}`, '_blank');
+            const msg = `*NEW ORDER*%0AItem: ${sF}%0APrice: ${sP}%0AName: ${n}%0ALocation: ${document.getElementById('custLoc').value}`;
+            window.open(`https://wa.me/966560976031?text=${msg}`, '_blank');
             closeModal();
         }
         setLang('en');
