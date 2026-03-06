@@ -4,150 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeServe KSA | Premium Food Network</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --primary: #006C35; --gold: #C5A059; --dark: #0f172a; --glass: rgba(255, 255, 255, 0.9); }
+        :root { --primary: #006C35; --gold: #C5A059; --dark: #0f172a; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #f1f5f9; color: var(--dark); }
+        body { background: #f8fafc; color: var(--dark); overflow-x: hidden; }
 
-        /* Language Switcher */
-        .lang-bar { background: var(--dark); padding: 10px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; }
-        .lang-bar button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; }
+        /* Multi-Language Bar - Arabic First */
+        .lang-bar { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; }
+        .lang-bar button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
 
-        header { background: linear-gradient(135deg, var(--dark), var(--primary)); color: white; padding: 60px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-        header h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--gold); }
+        /* Header with Pic */
+        header { 
+            background: linear-gradient(135deg, var(--dark), var(--primary)); 
+            color: white; padding: 70px 20px 50px; text-align: center; border-bottom: 5px solid var(--gold); 
+            display: flex; flex-direction: column; align-items: center; position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .header-pic-container { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .header-pic { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .maintenance-text { color: white; font-size: 0.55rem; font-weight: 700; background: var(--primary); padding: 2px 6px; border-radius: 5px; font-family: 'Orbitron', sans-serif; }
 
-        /* Stylish Scrolling Text */
-        .marquee { background: #fff; padding: 10px 0; border-bottom: 2px solid var(--gold); overflow: hidden; white-space: nowrap; }
-        .marquee p { display: inline-block; padding-left: 100%; font-weight: 700; color: var(--primary); animation: scroll 20s linear infinite; font-family: 'Orbitron', sans-serif; }
-        @keyframes scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+        header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--gold); margin-top: 10px; }
 
-        /* Rider Tracking Mockup */
-        .tracker-card { background: var(--dark); color: white; margin: 20px auto; padding: 20px; border-radius: 15px; max-width: 550px; width: 90%; }
-        .track-status { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--gold); }
-        .progress-bar { height: 8px; background: #334155; border-radius: 5px; margin: 10px 0; overflow: hidden; }
-        .progress-fill { width: 45%; height: 100%; background: var(--gold); }
+        /* Marquee */
+        .future-foods { background: white; padding: 10px 0; border-bottom: 2px solid var(--gold); overflow: hidden; }
+        .future-foods p { display: inline-block; white-space: nowrap; font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--primary); animation: scrollText 20s linear infinite; }
+        @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
+        /* Tracker */
+        .tracker { background: var(--dark); color: white; margin: 20px auto; padding: 20px; border-radius: 20px; max-width: 550px; width: 92%; }
+        .progress-line { height: 8px; background: #334155; border-radius: 5px; margin: 12px 0; overflow: hidden; }
+        .progress-fill { width: 60%; height: 100%; background: var(--gold); }
+
+        /* Grid */
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         .grid { display: grid; gap: 15px; }
-
-        .food-card { background: white; border-radius: 20px; padding: 15px; display: flex; align-items: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
-        .food-img { font-size: 2.5rem; background: #f8fafc; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 15px; }
+        .food-card { background: white; border-radius: 20px; padding: 12px; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
+        .food-img { font-size: 2.2rem; background: #f0fdf4; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 15px; }
         .food-info { flex: 1; padding: 0 15px; }
-        .food-info h3 { font-size: 1rem; color: var(--primary); }
-        .price { font-weight: 700; font-size: 1.1rem; color: var(--dark); }
-        .order-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: 600; }
+        .food-info h3 { font-size: 0.95rem; }
+        .price { font-weight: 700; color: var(--primary); }
+        .order-btn { background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; }
 
-        /* Modern Modal */
-        #checkoutModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; backdrop-filter: blur(8px); }
-        .modal-content { background: white; width: 90%; max-width: 450px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 30px; border-radius: 30px; }
-        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #f1f5f9; border-radius: 12px; outline: none; }
-        input:focus { border-color: var(--primary); }
-        
-        .payment-box { background: #f8fafc; padding: 15px; border-radius: 12px; margin: 10px 0; text-align: left; }
-        .confirm-btn { background: var(--primary); color: white; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 10px; }
+        /* Modal */
+        #checkoutModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; backdrop-filter: blur(8px); }
+        .modal-content { background: white; width: 90%; max-width: 400px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 25px; border-radius: 25px; text-align: center; }
+        input, select { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; outline: none; }
+        .confirm-btn { background: #22c55e; color: white; width: 100%; padding: 14px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div class="lang-bar">
-        <button onclick="setLang('en')">English</button>
         <button onclick="setLang('ar')">العربية</button>
+        <button onclick="setLang('en')">English</button>
         <button onclick="setLang('bn')">বাংলা</button>
         <button onclick="setLang('hi')">हिन्दी</button>
     </div>
 
     <header>
-        <h1 id="hTitle">HOMESERVE KSA</h1>
-        <p id="hSub">Elite Gastronomy & Smart Logistics</p>
+        <div class="header-pic-container">
+            <span class="maintenance-text">Maintenance The Class</span>
+            <img src="https://i.ibb.co/vz6G3S0/your-pic.png" alt="Owner" class="header-pic">
+        </div>
+        <h1 id="h-title">HOMESERVE KSA</h1>
+        <p id="h-sub">Premium Homemade Taste & Smart Delivery</p>
     </header>
 
-    <div class="marquee">
-        <p id="comingSoonTxt">★ MORE DELICIOUS FOODS ARE COMING SOON! STAY TUNED ★ قريباً المزيد من الأطعمة الشهية ★ আরও সুস্বাদু খাবার শীঘ্রই আসছে ★</p>
+    <div class="future-foods">
+        <p>★ MORE PREMIUM FOODS ARE COMING SOON - STAY TUNED! ★ قريباً المزيد من الأطعمة الشهية ★ আরও সুস্বাদু খাবার শীঘ্রই আসছে ★</p>
     </div>
 
-    <div class="tracker-card">
-        <h4 id="trackTitle"><i class="fas fa-truck-fast"></i> Live Delivery Tracking</h4>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
-        <div class="track-status">
-            <span id="status1">Order Received</span>
-            <span id="status2">35 Mins Left</span>
+    <div class="tracker">
+        <h4 id="track-h"><i class="fas fa-motorcycle"></i> Rider is 10 mins away</h4>
+        <div class="progress-line"><div class="progress-fill"></div></div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; color: var(--gold);">
+            <span id="s-rec">Order Received</span>
+            <span id="s-time">Rider: Active</span>
         </div>
     </div>
 
     <div class="container">
-        <h2 id="menuTitle" style="margin-bottom: 20px;">Menu Selection</h2>
+        <h2 id="m-title" style="margin-bottom: 20px; border-left: 5px solid var(--gold); padding-left: 10px;">Our Menu</h2>
         <div class="grid" id="menuGrid"></div>
     </div>
 
     <div id="checkoutModal">
         <div class="modal-content">
-            <h2 id="checkTitle" style="color: var(--primary);">Checkout</h2>
-            <p id="itemDetail" style="margin-bottom: 10px; font-weight: 600;"></p>
-            <input type="text" id="cName" placeholder="Full Name" required>
-            <input type="tel" id="cPhone" placeholder="WhatsApp Number" required>
-            <input type="text" id="cLoc" placeholder="Delivery Address / GPS Location" required>
-            
-            <div class="payment-box">
-                <p style="font-size: 0.8rem; margin-bottom: 5px;">Payment Method:</p>
-                <select id="payMethod">
-                    <option value="STC Pay">STC Pay</option>
-                    <option value="Al Rajhi">Al Rajhi Bank</option>
-                </select>
-            </div>
-            
+            <h2 id="modal-title" style="color: var(--primary);">Confirm Order</h2>
+            <p id="sel-food" style="margin: 10px 0; font-weight: 700; border-bottom: 1px solid #eee; padding-bottom: 5px;"></p>
+            <input type="text" id="c-name" placeholder="Full Name">
+            <input type="tel" id="c-phone" placeholder="WhatsApp Number">
+            <input type="text" id="c-loc" placeholder="Delivery Address">
+            <select id="c-pay">
+                <option value="STC Pay">STC Pay</option>
+                <option value="Al Rajhi Bank">Al Rajhi Bank</option>
+            </select>
             <button class="confirm-btn" onclick="submitOrder()">Confirm Order</button>
-            <center><p onclick="closeModal()" style="margin-top: 15px; color: #94a3b8; cursor: pointer;">Cancel</p></center>
+            <p onclick="closeModal()" style="margin-top: 15px; color: #94a3b8; cursor: pointer; font-size: 0.85rem;">Cancel</p>
         </div>
     </div>
 
     <script>
-        const foods = [
+        const foodList = [
             { icon: "🍗", p: "45 SR", en: "Broasted Chicken (4pc)", ar: "دجاج بروستد", bn: "ব্রোস্টেড চিকেন", hi: "ब्रोस्टेड चिकन" },
-            { icon: "🍛", p: "65 SR", en: "Mutton Kabsa", ar: "كبسة غنم", bn: "খাসির কাবসা", hi: "मटन कब्सा" },
+            { icon: "🍛", p: "65 SR", en: "Mutton Kabsa", ar: "كبسة لحم غنم", bn: "খাসির কাবসা", hi: "मटन कब्सा" },
             { icon: "🍔", p: "38 SR", en: "Double Beef Burger", ar: "برجر لحم دبل", bn: "ডাবল বিফ বার্গার", hi: "डबल बीफ बर्गर" },
-            { icon: "🥪", p: "30 SR", en: "Grand Club Sandwich", ar: "كلوب ساندوتش", bn: "ক্লাব স্যান্ডউইচ", hi: "क्लब सैंडविच" },
-            { icon: "🔥", p: "42 SR", en: "Al Faham Chicken", ar: "دجاج الفحم", bn: "আল ফাহাম চিকেন", hi: "अल फहम चिकन" },
+            { icon: "🥪", p: "30 SR", en: "Club Sandwich", ar: "كلوب ساندوتش", bn: "ক্লাব স্যান্ডউইচ", hi: "क्लब सैंडविच" },
+            { icon: "🔥", p: "42 SR", en: "Al Faham Chicken", ar: "دجاج الفحم", bn: "আল ফাহাম চিকেন", hi: "अल فहम चिकन" },
             { icon: "🌯", p: "35 SR", en: "Shawarma Jumbo", ar: "شاورما جامبو", bn: "শাওয়ারমা জ্যাম্বো", hi: "शवरमा जंबो" },
-            { icon: "🍢", p: "75 SR", en: "Mixed Grill Plate", ar: "مشويات مشكلة", bn: "মিক্সড গ্রিল", hi: "मिक्स ग्रिल" },
-            { icon: "🍰", p: "30 SR", en: "Kunafa Cheese", ar: "كنافة بالجبن", bn: "কুনাফা চিজ", hi: "कुनाफा पनीर" },
-            { icon: "🍹", p: "25 SR", en: "Fresh Fruit Cocktail", ar: "كوكتيل طازج", bn: "ফ্রেশ ককটেল", hi: "फ्रेश कॉकटेल" },
-            { icon: "🍝", p: "40 SR", en: "White Sauce Pasta", ar: "باستا صوص أبيض", bn: "হোয়াইট সস পাস্তা", hi: "व्हाइट सॉस पास्ता" },
+            { icon: "🍱", p: "50 SR", en: "Chicken Mandi", ar: "مندي دجاج", bn: "চিকেন মান্দি", hi: "चिकन मंडी" },
+            { icon: "🍢", p: "75 SR", en: "Mixed Grill", ar: "مشويات مشكلة", bn: "মিক্সড গ্রিল", hi: "मिक্স ग्रिल" },
+            { icon: "🍝", p: "40 SR", en: "White Sauce Pasta", ar: "باستا صوص أبيض", bn: "পাস্তা হোয়াইট সস", hi: "व्हाइट सॉस पास्ता" },
             { icon: "🍕", p: "55 SR", en: "Premium Pizza", ar: "بيتزا فاخرة", bn: "প্রিমিয়াম পিজ্জা", hi: "प्रीमियम पिज्जा" },
             { icon: "🍤", p: "80 SR", en: "Grilled Prawns", ar: "روبيان مشوي", bn: "গ্রিলড প্রন", hi: "ग्रिल्ड प्रॉन" },
-            { icon: "🥘", p: "50 SR", en: "Chicken Mandi", ar: "مندي دجاج", bn: "চিকেন মান্দি", hi: "चिकन मंडी" },
-            { icon: "🍱", p: "90 SR", en: "Royal Dinner Set", ar: "عشاء ملكي", bn: "রয়্যাল ডিনার", hi: "रॉयल डिनर" },
             { icon: "🥗", p: "20 SR", en: "Arabic Salad", ar: "سلطة عربية", bn: "আরবি সালাদ", hi: "अरबी सलाद" },
-            { icon: "🥞", p: "28 SR", en: "Pancake with Honey", ar: "بان كيك بالعسل", bn: "প্যানকেক মধু দিয়ে", hi: "पैनकेक शहद" },
-            { icon: "🍟", p: "15 SR", en: "Spicy Fries", ar: "بطاطس حارة", bn: "স্পাইসি চিপস", hi: "मसालेदार फ्राइज़" },
-            { icon: "☕", p: "12 SR", en: "Saudi Coffee (Dallah)", ar: "قهوة سعودية", bn: "সৌদি কফি", hi: "सऊदी कॉफी" },
+            { icon: "🍰", p: "30 SR", en: "Kunafa Cheese", ar: "كنافة بالجبن", bn: "কুনাফা চিজ", hi: "कुनाफा पनीर" },
+            { icon: "🥞", p: "28 SR", en: "Honey Pancake", ar: "بان كيك بالعسل", bn: "প্যানকেক মধু দিয়ে", hi: "पैनकेक शहद" },
             { icon: "🍦", p: "18 SR", en: "Turkish Ice Cream", ar: "آيس كريم تركي", bn: "তুর্কি আইসক্রিম", hi: "तुर्की आइसक्रीम" },
-            { icon: "🍩", p: "10 SR", en: "Assorted Donuts", ar: "دونات مشكلة", bn: "মিক্সড ডোনাট", hi: "डोनट्स" }
+            { icon: "🍟", p: "15 SR", en: "French Fries", ar: "بطاطس مقلية", bn: "ফ্রেঞ্চ ফ্রাই", hi: "फ्रेंच फ्राइज़" },
+            { icon: "☕", p: "12 SR", en: "Saudi Coffee", ar: "قهوة سعودية", bn: "সৌদি কফি", hi: "सऊदी कॉफी" },
+            { icon: "🍹", p: "25 SR", en: "Fruit Cocktail", ar: "كوكتيل فواكه", bn: "ফ্রেশ ককটেল", hi: "फ्रेश कॉকটেল" },
+            { icon: "🍩", p: "10 SR", en: "Fresh Donuts", ar: "دونات طازجة", bn: "তাজা ডোনাটস", hi: "डोनটস" },
+            { icon: "🥘", p: "48 SR", en: "Mutton Madhu", ar: "مضغوط لحم", bn: "খাসির মাজগুত", hi: "मटन मधू" }
         ];
 
         let curL = 'en';
         let selF = ""; let selP = "";
 
         const ui = {
-            en: { m: "Menu Selection", b: "Order", tr: "Live Tracking", s1: "Received", s2: "35 Mins Left", pay: "Confirm Order" },
-            ar: { m: "قائمة الطعام", b: "طلب", tr: "تتبع مباشر", s1: "تم الاستلام", s2: "بقي ٣٥ دقيقة", pay: "تأكيد الطلب" },
-            bn: { m: "খাবার নির্বাচন", b: "অর্ডার", tr: "লাইভ ট্র্যাকিং", s1: "গৃহীত হয়েছে", s2: "৩৫ মিনিট বাকি", pay: "অর্ডার কনফার্ম করুন" }
+            en: { title: "HOMESERVE KSA", m: "Our Menu", b: "Order", tr: "Rider is 10 mins away", r: "Received", t: "Rider: Active" },
+            ar: { title: "هوم سيرف السعودية", m: "قائمة الطعام", b: "طلب", tr: "السائق على بعد ١٠ دقائق", r: "تم الاستلام", t: "السائق: متاح" },
+            bn: { title: "হোম-সার্ভ কেএসএ", m: "খাবার তালিকা", b: "অর্ডার", tr: "রাইডার ১০ মিনিটের দূরত্বে আছে", r: "গৃহীত হয়েছে", t: "রাইডার: সক্রিয়" }
         };
 
         function setLang(l) {
             curL = l;
-            document.getElementById('menuTitle').innerText = ui[l]?.m || ui.en.m;
-            document.getElementById('trackTitle').innerText = ui[l]?.tr || ui.en.tr;
-            document.getElementById('status1').innerText = ui[l]?.s1 || ui.en.s1;
-            document.getElementById('status2').innerText = ui[l]?.s2 || ui.en.s2;
+            document.getElementById('h-title').innerText = ui[l].title;
+            document.getElementById('m-title').innerText = ui[l].m;
+            document.getElementById('track-h').innerText = ui[l].tr;
+            document.getElementById('s-rec').innerText = ui[l].r;
+            document.getElementById('s-time').innerText = ui[l].t;
             renderMenu();
         }
 
         function renderMenu() {
             const grid = document.getElementById('menuGrid');
             grid.innerHTML = "";
-            foods.forEach(f => {
+            foodList.forEach(f => {
                 grid.innerHTML += `
                     <div class="food-card">
                         <div class="food-img">${f.icon}</div>
@@ -155,30 +162,31 @@
                             <h3>${f[curL] || f.en}</h3>
                             <div class="price">${f.p}</div>
                         </div>
-                        <button class="order-btn" onclick="openCheckout('${f[curL]}', '${f.p}')">${ui[curL]?.b || 'Order'}</button>
+                        <button class="order-btn" onclick="openCheckout('${f[curL] || f.en}', '${f.p}')">${ui[curL].b}</button>
                     </div>`;
             });
         }
 
         function openCheckout(n, p) {
             selF = n; selP = p;
-            document.getElementById('itemDetail').innerText = n + " | " + p;
+            document.getElementById('sel-food').innerText = n + " - " + p;
             document.getElementById('checkoutModal').style.display = 'block';
         }
 
         function closeModal() { document.getElementById('checkoutModal').style.display = 'none'; }
 
         function submitOrder() {
-            const name = document.getElementById('cName').value;
-            const phone = document.getElementById('cPhone').value;
-            const loc = document.getElementById('cLoc').value;
-            const pay = document.getElementById('payMethod').value;
+            const n = document.getElementById('c-name').value;
+            const ph = document.getElementById('c-phone').value;
+            const l = document.getElementById('c-loc').value;
+            const pay = document.getElementById('c-pay').value;
 
-            if(!name || !phone || !loc) { alert("Please complete the form!"); return; }
+            if(!n || !ph || !l) { alert("Please complete all details!"); return; }
 
-            const text = `*🚨 NEW SITE ORDER 🚨*%0A%0A*Item:* ${selF}%0A*Price:* ${selP}%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Location:* ${loc}%0A*Payment:* ${pay}%0A%0A_Please verify the payment and start delivery!_`;
-            
-            // This triggers the notification by opening your WhatsApp with all details
+            // NEW: Confirmation Message
+            alert("Order Confirm, Shukriyan Habibi.");
+
+            const text = `*🚨 NEW FOOD ORDER 🚨*%0A%0A*Item:* ${selF}%0A*Price:* ${selP}%0A%0A*Customer:* ${n}%0A*Phone:* ${ph}%0A*Location:* ${l}%0A*Payment:* ${pay}`;
             window.open(`https://wa.me/966560976031?text=${text}`, '_blank');
             closeModal();
         }
