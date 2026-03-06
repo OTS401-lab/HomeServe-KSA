@@ -3,229 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeServe KSA | Premium Food Delivery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>HomeServe KSA | Premium Food Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        :root {
-            --primary: #006C35; /* Saudi Green */
-            --gold: #C5A059;
-            --dark: #121212;
-            --light: #fdfdfd;
-            --gray: #f4f4f4;
-        }
-
+        :root { --primary: #006C35; --gold: #C5A059; --dark: #0f172a; --glass: rgba(255, 255, 255, 0.9); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--gray); color: var(--dark); overflow-x: hidden; }
+        body { background: #f1f5f9; color: var(--dark); }
 
         /* Language Switcher */
-        .lang-bar {
-            background: var(--dark);
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .lang-bar button {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 5px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .lang-bar button:hover { background: var(--gold); color: white; }
+        .lang-bar { background: var(--dark); padding: 10px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; }
+        .lang-bar button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; }
 
-        /* Header & Hero */
-        header {
-            background: linear-gradient(rgba(0,108,53,0.9), rgba(0,108,53,0.9)), url('https://images.unsplash.com/photo-1547573854-74d2a7ad4484?auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--gold);
-        }
-        header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; }
-        header p { font-size: 1rem; opacity: 0.9; margin-top: 5px; }
+        header { background: linear-gradient(135deg, var(--dark), var(--primary)); color: white; padding: 60px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        header h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--gold); }
 
-        /* Future Food Banner */
-        .coming-soon {
-            background: var(--gold);
-            color: var(--dark);
-            padding: 12px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        /* Stylish Scrolling Text */
+        .marquee { background: #fff; padding: 10px 0; border-bottom: 2px solid var(--gold); overflow: hidden; white-space: nowrap; }
+        .marquee p { display: inline-block; padding-left: 100%; font-weight: 700; color: var(--primary); animation: scroll 20s linear infinite; font-family: 'Orbitron', sans-serif; }
+        @keyframes scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
-        /* Menu Section */
-        .container { max-width: 600px; margin: 30px auto; padding: 0 15px; }
-        .section-title { margin-bottom: 20px; font-weight: 700; border-left: 5px solid var(--primary); padding-left: 10px; }
+        /* Rider Tracking Mockup */
+        .tracker-card { background: var(--dark); color: white; margin: 20px auto; padding: 20px; border-radius: 15px; max-width: 550px; width: 90%; }
+        .track-status { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--gold); }
+        .progress-bar { height: 8px; background: #334155; border-radius: 5px; margin: 10px 0; overflow: hidden; }
+        .progress-fill { width: 45%; height: 100%; background: var(--gold); }
 
-        .food-card {
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            position: relative;
-        }
-        .food-card:hover { transform: translateY(-5px); }
-        
-        .food-img {
-            width: 80px; height: 80px;
-            background: var(--gray);
-            border-radius: 15px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.5rem;
-        }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .grid { display: grid; gap: 15px; }
 
+        .food-card { background: white; border-radius: 20px; padding: 15px; display: flex; align-items: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+        .food-img { font-size: 2.5rem; background: #f8fafc; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 15px; }
         .food-info { flex: 1; padding: 0 15px; }
-        .food-info h3 { font-size: 1.1rem; color: var(--primary); }
-        .food-info p { font-size: 0.8rem; color: #777; }
-        .price { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-top: 5px; }
-
-        .order-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        .food-info h3 { font-size: 1rem; color: var(--primary); }
+        .price { font-weight: 700; font-size: 1.1rem; color: var(--dark); }
+        .order-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: 600; }
 
         /* Modern Modal */
-        #orderModal {
-            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.8); z-index: 2000; backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background: white; width: 90%; max-width: 400px;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            padding: 30px; border-radius: 25px; text-align: center;
-        }
-        .modal-content input {
-            width: 100%; padding: 15px; margin: 10px 0;
-            border: 1px solid #ddd; border-radius: 12px; font-size: 1rem; outline: none;
-        }
-        .modal-content input:focus { border-color: var(--primary); }
-        .confirm-btn {
-            background: #25D366; color: white; width: 100%; padding: 15px;
-            border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
-        }
-
-        footer { text-align: center; padding: 40px; color: #aaa; font-size: 0.8rem; }
+        #checkoutModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; backdrop-filter: blur(8px); }
+        .modal-content { background: white; width: 90%; max-width: 450px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 30px; border-radius: 30px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #f1f5f9; border-radius: 12px; outline: none; }
+        input:focus { border-color: var(--primary); }
+        
+        .payment-box { background: #f8fafc; padding: 15px; border-radius: 12px; margin: 10px 0; text-align: left; }
+        .confirm-btn { background: var(--primary); color: white; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div class="lang-bar">
-        <button onclick="changeLang('en')">English</button>
-        <button onclick="changeLang('ar')">العربية</button>
-        <button onclick="changeLang('hi')">हिन्दी</button>
-        <button onclick="changeLang('bn')">বাংলা</button>
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('ar')">العربية</button>
+        <button onclick="setLang('bn')">বাংলা</button>
+        <button onclick="setLang('hi')">हिन्दी</button>
     </div>
 
     <header>
-        <h1 id="mainTitle">HomeServe KSA</h1>
-        <p id="subTitle">Premium Homemade Taste & Quick Delivery</p>
+        <h1 id="hTitle">HOMESERVE KSA</h1>
+        <p id="hSub">Elite Gastronomy & Smart Logistics</p>
     </header>
 
-    <div class="coming-soon">
-        <i class="fas fa-star"></i> 
-        <span id="comingSoon">More delicious foods are coming soon! | আরও খাবার শীঘ্রই আসছে! | قريباً المزيد من الأطعمة الشهية</span>
+    <div class="marquee">
+        <p id="comingSoonTxt">★ MORE DELICIOUS FOODS ARE COMING SOON! STAY TUNED ★ قريباً المزيد من الأطعمة الشهية ★ আরও সুস্বাদু খাবার শীঘ্রই আসছে ★</p>
+    </div>
+
+    <div class="tracker-card">
+        <h4 id="trackTitle"><i class="fas fa-truck-fast"></i> Live Delivery Tracking</h4>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <div class="track-status">
+            <span id="status1">Order Received</span>
+            <span id="status2">35 Mins Left</span>
+        </div>
     </div>
 
     <div class="container">
-        <h2 class="section-title" id="menuTitle">Our Menu</h2>
+        <h2 id="menuTitle" style="margin-bottom: 20px;">Menu Selection</h2>
+        <div class="grid" id="menuGrid"></div>
+    </div>
 
-        <div class="food-card">
-            <div class="food-img">🍗</div>
-            <div class="food-info">
-                <h3>Broasted Chicken</h3>
-                <p>Al-Baik Style 4 Pcs + Fries</p>
-                <div class="price">45 SR</div>
-            </div>
-            <button class="order-btn" onclick="openOrder('Broasted Chicken', '45 SR')">Order</button>
-        </div>
-
-        <div class="food-card">
-            <div class="food-img">🍔</div>
-            <div class="food-info">
-                <h3>Double Beef Burger</h3>
-                <p>Premium Beef Patty & Cheese</p>
-                <div class="price">38 SR</div>
-            </div>
-            <button class="order-btn" onclick="openOrder('Double Beef Burger', '38 SR')">Order</button>
-        </div>
-
-        </div>
-
-    <div id="orderModal">
+    <div id="checkoutModal">
         <div class="modal-content">
-            <h2 id="modalFood" style="color: var(--primary);"></h2>
-            <p id="modalPrice" style="font-weight: bold; margin-bottom: 20px;"></p>
-            <input type="text" id="custName" placeholder="Full Name">
-            <input type="text" id="custCity" placeholder="City (Jeddah/Riyadh/etc)">
-            <input type="text" id="custLoc" placeholder="District/Street Name">
-            <button class="confirm-btn" onclick="completeOrder()">Confirm via WhatsApp</button>
-            <p onclick="closeOrder()" style="margin-top: 15px; color: #888; cursor: pointer;">Cancel</p>
+            <h2 id="checkTitle" style="color: var(--primary);">Checkout</h2>
+            <p id="itemDetail" style="margin-bottom: 10px; font-weight: 600;"></p>
+            <input type="text" id="cName" placeholder="Full Name" required>
+            <input type="tel" id="cPhone" placeholder="WhatsApp Number" required>
+            <input type="text" id="cLoc" placeholder="Delivery Address / GPS Location" required>
+            
+            <div class="payment-box">
+                <p style="font-size: 0.8rem; margin-bottom: 5px;">Payment Method:</p>
+                <select id="payMethod">
+                    <option value="STC Pay">STC Pay</option>
+                    <option value="Al Rajhi">Al Rajhi Bank</option>
+                </select>
+            </div>
+            
+            <button class="confirm-btn" onclick="submitOrder()">Confirm Order</button>
+            <center><p onclick="closeModal()" style="margin-top: 15px; color: #94a3b8; cursor: pointer;">Cancel</p></center>
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 HomeServe KSA. All Rights Reserved.
-    </footer>
-
     <script>
-        const translations = {
-            en: { title: "HomeServe KSA", sub: "Premium Homemade Taste", menu: "Our Menu", btn: "Order", name: "Full Name", city: "City", loc: "Address" },
-            ar: { title: "هوم سيرف السعودية", sub: "طعم منزلي فاخر", menu: "قائمتنا", btn: "طلب", name: "الاسم الكامل", city: "المدينة", loc: "العنوان" },
-            hi: { title: "HomeServe KSA", sub: "प्रीमियम होममेड स्वाद", menu: "हमारा मेनू", btn: "ऑर्डर", name: "पूरा नाम", city: "शहर", loc: "पता" },
-            bn: { title: "হোম-সার্ভ কেএসএ", sub: "ঘরোয়া স্বাদ ও দ্রুত ডেলিভারি", menu: "আমাদের মেনু", btn: "অর্ডার", name: "আপনার নাম", city: "শহর", loc: "ঠিকানা" }
+        const foods = [
+            { icon: "🍗", p: "45 SR", en: "Broasted Chicken (4pc)", ar: "دجاج بروستد", bn: "ব্রোস্টেড চিকেন", hi: "ब्रोस्टेड चिकन" },
+            { icon: "🍛", p: "65 SR", en: "Mutton Kabsa", ar: "كبسة غنم", bn: "খাসির কাবসা", hi: "मटन कब्सा" },
+            { icon: "🍔", p: "38 SR", en: "Double Beef Burger", ar: "برجر لحم دبل", bn: "ডাবল বিফ বার্গার", hi: "डबल बीफ बर्गर" },
+            { icon: "🥪", p: "30 SR", en: "Grand Club Sandwich", ar: "كلوب ساندوتش", bn: "ক্লাব স্যান্ডউইচ", hi: "क्लब सैंडविच" },
+            { icon: "🔥", p: "42 SR", en: "Al Faham Chicken", ar: "دجاج الفحم", bn: "আল ফাহাম চিকেন", hi: "अल फहम चिकन" },
+            { icon: "🌯", p: "35 SR", en: "Shawarma Jumbo", ar: "شاورما جامبو", bn: "শাওয়ারমা জ্যাম্বো", hi: "शवरमा जंबो" },
+            { icon: "🍢", p: "75 SR", en: "Mixed Grill Plate", ar: "مشويات مشكلة", bn: "মিক্সড গ্রিল", hi: "मिक्स ग्रिल" },
+            { icon: "🍰", p: "30 SR", en: "Kunafa Cheese", ar: "كنافة بالجبن", bn: "কুনাফা চিজ", hi: "कुनाफा पनीर" },
+            { icon: "🍹", p: "25 SR", en: "Fresh Fruit Cocktail", ar: "كوكتيل طازج", bn: "ফ্রেশ ককটেল", hi: "फ्रेश कॉकटेल" },
+            { icon: "🍝", p: "40 SR", en: "White Sauce Pasta", ar: "باستا صوص أبيض", bn: "হোয়াইট সস পাস্তা", hi: "व्हाइट सॉस पास्ता" },
+            { icon: "🍕", p: "55 SR", en: "Premium Pizza", ar: "بيتزا فاخرة", bn: "প্রিমিয়াম পিজ্জা", hi: "प्रीमियम पिज्जा" },
+            { icon: "🍤", p: "80 SR", en: "Grilled Prawns", ar: "روبيان مشوي", bn: "গ্রিলড প্রন", hi: "ग्रिल्ड प्रॉन" },
+            { icon: "🥘", p: "50 SR", en: "Chicken Mandi", ar: "مندي دجاج", bn: "চিকেন মান্দি", hi: "चिकन मंडी" },
+            { icon: "🍱", p: "90 SR", en: "Royal Dinner Set", ar: "عشاء ملكي", bn: "রয়্যাল ডিনার", hi: "रॉयल डिनर" },
+            { icon: "🥗", p: "20 SR", en: "Arabic Salad", ar: "سلطة عربية", bn: "আরবি সালাদ", hi: "अरबी सलाद" },
+            { icon: "🥞", p: "28 SR", en: "Pancake with Honey", ar: "بان كيك بالعسل", bn: "প্যানকেক মধু দিয়ে", hi: "पैनकेक शहद" },
+            { icon: "🍟", p: "15 SR", en: "Spicy Fries", ar: "بطاطس حارة", bn: "স্পাইসি চিপস", hi: "मसालेदार फ्राइज़" },
+            { icon: "☕", p: "12 SR", en: "Saudi Coffee (Dallah)", ar: "قهوة سعودية", bn: "সৌদি কফি", hi: "सऊदी कॉफी" },
+            { icon: "🍦", p: "18 SR", en: "Turkish Ice Cream", ar: "آيس كريم تركي", bn: "তুর্কি আইসক্রিম", hi: "तुर्की आइसक्रीम" },
+            { icon: "🍩", p: "10 SR", en: "Assorted Donuts", ar: "دونات مشكلة", bn: "মিক্সড ডোনাট", hi: "डोनट्स" }
+        ];
+
+        let curL = 'en';
+        let selF = ""; let selP = "";
+
+        const ui = {
+            en: { m: "Menu Selection", b: "Order", tr: "Live Tracking", s1: "Received", s2: "35 Mins Left", pay: "Confirm Order" },
+            ar: { m: "قائمة الطعام", b: "طلب", tr: "تتبع مباشر", s1: "تم الاستلام", s2: "بقي ٣٥ دقيقة", pay: "تأكيد الطلب" },
+            bn: { m: "খাবার নির্বাচন", b: "অর্ডার", tr: "লাইভ ট্র্যাকিং", s1: "গৃহীত হয়েছে", s2: "৩৫ মিনিট বাকি", pay: "অর্ডার কনফার্ম করুন" }
         };
 
-        function changeLang(lang) {
-            document.getElementById('mainTitle').innerText = translations[lang].title;
-            document.getElementById('subTitle').innerText = translations[lang].sub;
-            document.getElementById('menuTitle').innerText = translations[lang].menu;
-            document.getElementById('custName').placeholder = translations[lang].name;
-            document.getElementById('custCity').placeholder = translations[lang].city;
-            document.getElementById('custLoc').placeholder = translations[lang].loc;
-            
-            let btns = document.querySelectorAll('.order-btn');
-            btns.forEach(b => b.innerText = translations[lang].btn);
+        function setLang(l) {
+            curL = l;
+            document.getElementById('menuTitle').innerText = ui[l]?.m || ui.en.m;
+            document.getElementById('trackTitle').innerText = ui[l]?.tr || ui.en.tr;
+            document.getElementById('status1').innerText = ui[l]?.s1 || ui.en.s1;
+            document.getElementById('status2').innerText = ui[l]?.s2 || ui.en.s2;
+            renderMenu();
         }
 
-        let currentFood = ""; let currentPrice = "";
-        function openOrder(f, p) {
-            currentFood = f; currentPrice = p;
-            document.getElementById('modalFood').innerText = f;
-            document.getElementById('modalPrice').innerText = "Total: " + p;
-            document.getElementById('orderModal').style.display = 'block';
+        function renderMenu() {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = "";
+            foods.forEach(f => {
+                grid.innerHTML += `
+                    <div class="food-card">
+                        <div class="food-img">${f.icon}</div>
+                        <div class="food-info">
+                            <h3>${f[curL] || f.en}</h3>
+                            <div class="price">${f.p}</div>
+                        </div>
+                        <button class="order-btn" onclick="openCheckout('${f[curL]}', '${f.p}')">${ui[curL]?.b || 'Order'}</button>
+                    </div>`;
+            });
         }
-        function closeOrder() { document.getElementById('orderModal').style.display = 'none'; }
 
-        function completeOrder() {
-            const name = document.getElementById('custName').value;
-            const city = document.getElementById('custCity').value;
-            const loc = document.getElementById('custLoc').value;
-            if(!name || !city || !loc) { alert("Please fill all details!"); return; }
+        function openCheckout(n, p) {
+            selF = n; selP = p;
+            document.getElementById('itemDetail').innerText = n + " | " + p;
+            document.getElementById('checkoutModal').style.display = 'block';
+        }
+
+        function closeModal() { document.getElementById('checkoutModal').style.display = 'none'; }
+
+        function submitOrder() {
+            const name = document.getElementById('cName').value;
+            const phone = document.getElementById('cPhone').value;
+            const loc = document.getElementById('cLoc').value;
+            const pay = document.getElementById('payMethod').value;
+
+            if(!name || !phone || !loc) { alert("Please complete the form!"); return; }
+
+            const text = `*🚨 NEW SITE ORDER 🚨*%0A%0A*Item:* ${selF}%0A*Price:* ${selP}%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Location:* ${loc}%0A*Payment:* ${pay}%0A%0A_Please verify the payment and start delivery!_`;
             
-            const text = `*NEW PREMIUM ORDER*%0A%0A*Item:* ${currentFood}%0A*Price:* ${currentPrice}%0A%0A*Customer:*%0AName: ${name}%0ACity: ${city}%0ALocation: ${loc}`;
+            // This triggers the notification by opening your WhatsApp with all details
             window.open(`https://wa.me/966560976031?text=${text}`, '_blank');
-            closeOrder();
+            closeModal();
         }
+
+        setLang('en');
     </script>
 </body>
 </html>
-
